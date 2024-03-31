@@ -1,15 +1,15 @@
-package com.ms2.model;
+package ms1.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FailResponse {
+public class MS1ErrorResponse {
     private String code;
     private String message;
 }

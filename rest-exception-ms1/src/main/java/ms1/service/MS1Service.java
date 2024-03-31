@@ -20,13 +20,15 @@ public class MS1Service {
     public ResponseEntity<GetSampleResponse> getSampleData (boolean hasError)
     throws Exception {
         try {
-            ResponseEntity<GetSampleData> res = restTemplate.exchange(buildUri(hasError),
+            ResponseEntity<GetSampleResponse> res = restTemplate.exchange(buildUri(hasError),
                                                                       HttpMethod.GET,
                                                                       null,
-                                                                      GetSampleData.class);
+                                                                          GetSampleResponse.class);
             return new ResponseEntity(GetSampleResponse.builder()
-                                                       .data(res.getBody())
+                                                       .data(res.getBody()
+                                                                .getData())
                                                        .status(res.getStatusCode())
+                                                       .message("Success retrieve data")
                                                        .build(),
                                       res.getStatusCode());
         } catch (Exception e) {

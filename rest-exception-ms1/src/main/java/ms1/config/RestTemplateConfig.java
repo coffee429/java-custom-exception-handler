@@ -1,6 +1,7 @@
 package ms1.config;
 
 
+import ms1.exception.RestErrorHandler;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ public class RestTemplateConfig {
         return  builder
                 .setConnectTimeout(Duration.ofMillis(5000))
                 .setReadTimeout(Duration.ofSeconds(30))
+                .errorHandler(new RestErrorHandler())
                 .build();
 
     }

@@ -4,7 +4,6 @@ import com.ms2.model.GetSampleResponse;
 import com.ms2.service.MS2Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
