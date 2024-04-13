@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MS2ErrorResponse {
-    @JsonProperty("error")
-    private Error error;
+public class Error {
+    @JsonProperty("code")
+    private String code;
+    @JsonProperty("message")
+    private String message;
 }

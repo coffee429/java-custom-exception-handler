@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/ms1/")
 public interface MS1ControllerApi {
 
-    @GetMapping("/data")
-    public ResponseEntity<GetSampleResponse> getSampleData (@RequestParam boolean hasError)
-    throws Exception;
+    @GetMapping("/json")
+    public ResponseEntity<GetSampleResponse> getJsonData (@RequestParam boolean hasError);
 
-
+    @GetMapping("/xml")
+    public ResponseEntity<GetSampleResponse> getXmlData ();
 }

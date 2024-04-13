@@ -13,15 +13,15 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MS2Service {
 
-    public ResponseEntity<GetSampleResponse> getSampleData (boolean hasError) {
+    public ResponseEntity<GetSampleResponse> getJsonData (boolean hasError) {
         try {
             return hasError ? new ResponseEntity(buildFailRes(),
-                                                 HttpStatus.INTERNAL_SERVER_ERROR)
-                    : new ResponseEntity(buildSuccessRes(),
-                                         HttpStatus.OK);
+                                                 HttpStatus.INTERNAL_SERVER_ERROR) : new ResponseEntity(buildSuccessRes(),
+                                                                                                        HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
-            return new ResponseEntity(buildFailRes(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(buildFailRes(),
+                                      HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -40,19 +40,33 @@ public class MS2Service {
 
     private GetSampleResponse buildFailRes () {
         FailResponse error = FailResponse.builder()
-                .code("ERROR")
-                .message(buildRandomMessage())
-                                           .build();
+                                         .code("ERROR")
+                                         .message(buildRandomMessage())
+                                         .build();
 
         return GetSampleResponse.builder()
                                 .error(error)
                                 .build();
     }
 
-    private String buildRandomMessage() {
+    private String buildRandomMessage () {
         int length = 20;
         boolean useLetters = true;
         boolean useNumbers = true;
-        return RandomStringUtils.random(length, useLetters, useNumbers);
+        return RandomStringUtils.random(length,
+                                        useLetters,
+                                        useNumbers);
+    }
+
+    private FailResponse buildFailResForXml () {
+        return FailResponse.builder()
+                           .code("ERROR")
+                           .message(buildRandomMessage())
+                           .build();
+    }
+
+    public ResponseEntity<FailResponse> getXmlResponse () {
+        return new ResponseEntity(buildFailResForXml(),
+                                  HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

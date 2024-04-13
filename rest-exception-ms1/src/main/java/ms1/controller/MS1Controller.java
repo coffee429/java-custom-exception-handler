@@ -13,8 +13,12 @@ public class MS1Controller implements MS1ControllerApi {
     private final MS1Service service;
 
     @Override
-    public ResponseEntity<GetSampleResponse> getSampleData (boolean hasError)
-    throws Exception {
-        return service.getSampleData(hasError);
+    public ResponseEntity<GetSampleResponse> getJsonData (boolean hasError) {
+        return service.getJsonData(hasError);
+    }
+
+    @Override
+    public ResponseEntity<GetSampleResponse> getXmlData () {
+        return service.getXmlData();
     }
 }
